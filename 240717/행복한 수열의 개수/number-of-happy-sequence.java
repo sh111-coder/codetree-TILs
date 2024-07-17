@@ -20,6 +20,10 @@ public class Main {
         }
         
         int cnt = 0;
+        if (n == 1) {
+            System.out.println(2);
+            return;
+        }
 
         // 행 수열 고르기
         for (int i = 0; i < n; i++) {
