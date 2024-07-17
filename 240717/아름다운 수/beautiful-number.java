@@ -21,7 +21,8 @@ public class Main {
                 char c = cur.charAt(index);
                 int num = c - '0';
                 int cnt = 0;
-                for (int j = index; j < index + num; j++) {
+                int max = index + num;
+                for (int j = index; j < max; j++) {
                     if (j >= cur.length()) {
                         break;
                     }
