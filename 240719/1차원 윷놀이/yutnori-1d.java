@@ -51,20 +51,20 @@ public class Main {
 
     private static int calculateScore(int[] choice) {
         scores = new int[k + 1];
-        Set<Integer> finishedPieces = new HashSet<>();
+        Arrays.fill(scores, 1);
         int score = 0;
         for (int i = 1; i <= n; i++) {
             int curDistance = distance[i];
             int piece = choice[i];
             int curScore = scores[piece];
-            if (finishedPieces.contains(piece)) {
+
+            if (curScore >= m) {
                 continue;
             }
 
             scores[piece] += curDistance;
-            if (scores[piece] >= (m - 1)) {
+            if (scores[piece] >= m) {
                 score++;
-                finishedPieces.add(piece);
             }
         }
         return score;
