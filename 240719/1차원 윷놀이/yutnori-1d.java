@@ -51,7 +51,6 @@ public class Main {
 
     private static int calculateScore(int[] choice) {
         scores = new int[k + 1];
-        Arrays.fill(scores, 1);
         Set<Integer> finishedPieces = new HashSet<>();
         int score = 0;
         for (int i = 1; i <= n; i++) {
@@ -63,7 +62,7 @@ public class Main {
             }
 
             scores[piece] += curDistance;
-            if (scores[piece] >= m) {
+            if (scores[piece] >= (m - 1)) {
                 score++;
                 finishedPieces.add(piece);
             }
