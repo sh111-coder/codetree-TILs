@@ -34,7 +34,9 @@ public class Main {
             StringTokenizer startInput = new StringTokenizer(br.readLine());
             int startX = Integer.parseInt(startInput.nextToken());
             int startY = Integer.parseInt(startInput.nextToken());
-            bfs(startX - 1, startY - 1);
+            if (!visited[startX - 1][startY - 1]) {
+                bfs(startX - 1, startY - 1);
+            }
         }
         
 
