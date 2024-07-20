@@ -27,6 +27,9 @@ public class Main {
             }
         }
 
+        // 1 1
+        // 0 
+        // 1 1
         for (int i = 0; i < k; i++) {
             StringTokenizer startInput = new StringTokenizer(br.readLine());
             int startX = Integer.parseInt(startInput.nextToken());
@@ -42,6 +45,8 @@ public class Main {
     private static void bfs(int startX, int startY) {
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{startX, startY});
+        visited[startX][startY] = true;
+        cnt++;
         
         while (!queue.isEmpty()) {
             int size = queue.size();
