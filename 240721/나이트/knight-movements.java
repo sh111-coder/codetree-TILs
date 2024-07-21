@@ -23,6 +23,11 @@ public class Main {
         r2 = Integer.parseInt(positionInput.nextToken()) - 1;
         c2 = Integer.parseInt(positionInput.nextToken()) - 1;
 
+        if (r1 == r2 && c1 == c2) {
+            System.out.println(0);
+            return;
+        }
+
         bfs(r1, c1);
         if (min == Integer.MAX_VALUE) {
             System.out.println(-1);
