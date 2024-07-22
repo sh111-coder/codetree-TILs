@@ -11,6 +11,11 @@ public class Main {
         String str = br.readLine();
         int len = str.length();
 
+        if (len == 1) {
+            System.out.println(2);
+            return;
+        }
+
         int min = Integer.MAX_VALUE;
         for (int i = 1; i <= len; i++) {
             String[] splitStr = str.split("");
