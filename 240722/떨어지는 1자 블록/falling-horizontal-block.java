@@ -22,7 +22,7 @@ public class Main {
 
         int minRow = Integer.MAX_VALUE;
         for (int col = k; col <= (k + m - 1); col++) {
-            int tempRow = 0;
+            int tempRow = n - 1;
             for (int row = n - 1; row > 0; row--) {
                 if (block[row][col] == 1) {
                     tempRow = row - 1;
