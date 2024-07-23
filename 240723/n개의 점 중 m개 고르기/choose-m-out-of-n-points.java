@@ -8,6 +8,7 @@ public class Main {
     static int n, m;
     static int[][] map;
     static int min = Integer.MAX_VALUE;
+    static PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,37 +25,42 @@ public class Main {
             map[i][1] = y;
         }
 
-        Arrays.sort(map, (o1, o2) -> {
-            if (o1[0] == o2[0]) {
-                return o1[1] - o2[1];
-            }
-            return o1[0] - o2[0];
-        });
-
         back(0, 0, new int[m]);
         System.out.println(min);
     }
 
     private static void back(int depth, int start, int[] choice) {
         if (depth == m) {
-            int minIdx = choice[0];
-            int maxIdx = choice[m - 1];
-
-            int x1 = map[minIdx][0];
-            int x2 = map[maxIdx][0];
-            int y1 = map[minIdx][1];
-            int y2 = map[maxIdx][1];
-
-            int xResult = (x1 - x2) * (x1 - x2);
-            int yResult = (y1 - y2) * (y1 - y2);
-            int result = xResult + yResult;
-            min = Math.min(min, result);
+            pq = new PriorityQueue<>(Collections.reverseOrder());
+            back2(0, 0, choice, new int[2]);
+            min = Math.min(min, pq.poll());
             return;
         }
 
         for (int i = start; i < n; i++) {
             choice[depth] = i;
             back(depth + 1, i + 1, choice);
+        }
+    }
+
+    private static void back2(int depth, int start, int[] choice, int[] choice2) {
+        if (depth == 2) {
+            int x1 = map[choice2[0]][0];
+            int x2 = map[choice2[1]][0];
+            int y1 = map[choice2[0]][1];
+            int y2 = map[choice2[1]][1];
+
+            int xResult = (x1 - x2) * (x1 - x2);
+            int yResult = (y1 - y2) * (y1 - y2);
+            int result = xResult + yResult;
+
+            pq.add(result);
+            return;
+        }
+
+        for (int i = start; i < choice.length; i++) {
+            choice2[depth] = choice[i];
+            back2(depth + 1, i + 1, choice, choice2);
         }
     }
 }
