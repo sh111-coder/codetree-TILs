@@ -24,40 +24,30 @@ public class Main {
             map[i][1] = y;
         }
 
-        back1(0, 0, new int[m]);
+        back(0, 0, new int[m]);
         System.out.println(min);
     }
 
-    private static void back1(int depth, int start, int[] choice) {
+    private static void back(int depth, int start, int[] choice) {
         if (depth == m) {
-            back2(0, 0, choice, new int[2]);
+            int minIdx = choice[0];
+            int maxIdx = choice[m - 1];
+
+            int x1 = map[minIdx][0];
+            int x2 = map[maxIdx][0];
+            int y1 = map[minIdx][1];
+            int y2 = map[maxIdx][1];
+
+            int xResult = (x1 - x2) * (x1 - x2);
+            int yResult = (y1 - y2) * (y1 - y2);
+            int result = xResult + yResult;
+            min = Math.min(min, result);
             return;
         }
 
         for (int i = start; i < n; i++) {
             choice[depth] = i;
-            back1(depth + 1, i + 1, choice);
-        }
-    }
-
-    private static void back2(int depth, int start, int[] choice1, int[] choice2) {
-        if (depth == 2) {
-            int x1 = map[choice1[choice2[0]]][0];
-            int x2 = map[choice1[choice2[1]]][0];
-            int y1 = map[choice1[choice2[0]]][1];
-            int y2 = map[choice1[choice2[1]]][1];
-
-            int xResult = (x1 - x2) * (x1 - x2);
-            int yResult = (y1 - y2) * (y1 - y2);
-            int result = xResult + yResult;
-
-            min = Math.min(min, result);
-            return;
-        }
-
-        for (int i = start; i < choice1.length; i++) {
-            choice2[depth] = i;
-            back2(depth + 1, i + 1, choice1, choice2);
+            back(depth + 1, i + 1, choice);
         }
     }
 }
