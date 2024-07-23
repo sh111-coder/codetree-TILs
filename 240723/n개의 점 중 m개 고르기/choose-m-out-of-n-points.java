@@ -24,6 +24,13 @@ public class Main {
             map[i][1] = y;
         }
 
+        Arrays.sort(map, (o1, o2) -> {
+            if (o1[0] == o2[0]) {
+                return o1[1] - o2[1];
+            }
+            return o1[0] - o2[0];
+        });
+
         back(0, 0, new int[m]);
         System.out.println(min);
     }
