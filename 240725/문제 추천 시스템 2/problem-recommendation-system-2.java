@@ -133,12 +133,14 @@ public class Main {
                 }
             } else if (command.equals("sv")) {
                 int P = Integer.parseInt(commandInput.nextToken());
+                List<Integer> target = new ArrayList<>();
                 for (List<Integer> eachProblems1 : problemsByGroup.values()) {
                     if (eachProblems1.contains(P)) {
-                        problemsByGroup.remove(P);
+                        target = eachProblems1;
                         break;
                     }
                 }
+                target.remove((Object) P);
                 difficultByProblem.remove(P);
                 problems.remove((Object) P);
             }
