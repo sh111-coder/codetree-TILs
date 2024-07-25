@@ -135,7 +135,7 @@ public class Main {
                 int P = Integer.parseInt(commandInput.nextToken());
                 for (List<Integer> eachProblems1 : problemsByGroup.values()) {
                     if (eachProblems1.contains(P)) {
-                        eachProblems1.remove(P);
+                        problemsByGroup.remove(P);
                         break;
                     }
                 }
@@ -144,7 +144,7 @@ public class Main {
                         difficultByProblem.remove(P);
                     }
                 }
-                problems.remove(P);
+                problems.remove((Object) P);
             }
         }
     }
