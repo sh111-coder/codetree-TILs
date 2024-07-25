@@ -118,34 +118,7 @@ public class Main {
                     }
                     System.out.println(underDifficultProblems.get(0));
                 }
-            } else if (command.equals("ad")) {
-                int P = Integer.parseInt(commandInput.nextToken());
-                int L = Integer.parseInt(commandInput.nextToken());
-                int G = Integer.parseInt(commandInput.nextToken());
-
-                if (!problemsByGroup.containsKey(G)) {
-                    problemsByGroup.put(G, new ArrayList<>());
-                }
-                problemsByGroup.get(G).add(P);
-                difficultByProblem.put(P, L);
-                if (!problems.contains(P)) {
-                    problems.add(P);
-                }
-            } else if (command.equals("sv")) {
-                int P = Integer.parseInt(commandInput.nextToken());
-                for (List<Integer> eachProblems1 : problemsByGroup.values()) {
-                    if (eachProblems1.contains(P)) {
-                        problemsByGroup.remove(P);
-                        break;
-                    }
-                }
-                for (Integer eachProblems2 : difficultByProblem.keySet()) {
-                    if (eachProblems2 == P) {
-                        difficultByProblem.remove(P);
-                    }
-                }
-                problems.remove((Object) P);
-            }
+            } 
         }
     }
 }
