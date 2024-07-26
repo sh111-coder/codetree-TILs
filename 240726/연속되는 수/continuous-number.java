@@ -39,6 +39,9 @@ public class Main {
                     curNum = tempNum;
                     max = Math.max(max, len);
                     len = 1;
+                } else if (curNum == tempNum && i == temp.length - 1) {
+                    len++;
+                    max = Math.max(max, len);
                 } else {
                     len++;
                 }
