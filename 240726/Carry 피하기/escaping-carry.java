@@ -47,7 +47,7 @@ public class Main {
                         continue;
                     }
                     int idx = choiceNum.length() - curLen;
-                    sum += Integer.parseInt(String.valueOf(choiceNum.charAt(idx)));
+                    sum += choiceNum.charAt(idx) - '0';
                 }
 
                 if (sum >= 10) {
